@@ -1,0 +1,66 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Handcrafted jewelry or bag product item in the Artified_np catalog",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 256 },
+        "subtitle": { "type": "string", "maxLength": 500 },
+        "category": { "type": "string", "maxLength": 64 },
+        "price": { "type": "number" },
+        "originalPrice": { "type": "number" },
+        "rating": { "type": "number" },
+        "reviewsCount": { "type": "number" },
+        "isHandmade": { "type": "boolean" },
+        "isBestSeller": { "type": "boolean" },
+        "isNewArrival": { "type": "boolean" },
+        "inStock": { "type": "boolean" },
+        "stockCount": { "type": "number" },
+        "leadTime": { "type": "string", "maxLength": 256 },
+        "dimensions": { "type": "string", "maxLength": 256 },
+        "weight": { "type": "string", "maxLength": 128 },
+        "description": { "type": "string", "maxLength": 8000 },
+        "stylingTip": { "type": "string", "maxLength": 2000 },
+        "materials": { "type": "array" },
+        "careNotes": { "type": "array" },
+        "images": { "type": "array" },
+        "tags": { "type": "array" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "title", "price", "category", "images"]
+    },
+    "InstagramJournalItem": {
+      "title": "InstagramJournalItem",
+      "description": "Instagram visual journal and showcase post item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 256 },
+        "handle": { "type": "string", "maxLength": 128 },
+        "caption": { "type": "string", "maxLength": 4000 },
+        "thumbnail": { "type": "string" },
+        "postUrl": { "type": "string", "maxLength": 1000 },
+        "likes": { "type": "string", "maxLength": 64 },
+        "views": { "type": "string", "maxLength": 64 },
+        "showViews": { "type": "boolean" },
+        "showLikes": { "type": "boolean" },
+        "taggedProductId": { "type": "string", "maxLength": 128 },
+        "taggedProductName": { "type": "string", "maxLength": 256 },
+        "taggedProductPrice": { "type": "number" }
+      },
+      "required": ["id", "title", "postUrl"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Live catalog products accessible to all buyers and editable by seller"
+    },
+    "/instagram_journal/{itemId}": {
+      "schema": "InstagramJournalItem",
+      "description": "Instagram journal posts editable by admins"
+    }
+  }
+}
